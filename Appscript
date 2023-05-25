@@ -1,0 +1,20 @@
+function doGet(req) {
+  var doc = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = doc.getSheetByName('tedxtesting2');
+  var values = sheet.getDataRange().getValues();
+
+  var output = [];
+  for(var i = 0; i<values.length; i++){
+    var row = {};
+    row['Name'] = values[i][0];
+    row['Branch'] = values[i][1];
+    row['Year'] = values[i][2];
+    row['RollNo'] = values[i][4];
+    row['Password'] = values[i][11];
+    row['Randomno'] = values[i][12];
+    row['Status'] = values[i][13];
+    output.push(row);
+
+  }
+  return ContentService.createTextOutput(JSON.stringify({data: output})).setMimeType(ContentService.MimeType.JSON);
+}
