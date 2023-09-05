@@ -18,3 +18,4 @@ function doGet(req) {
   }
   return ContentService.createTextOutput(JSON.stringify({data: output})).setMimeType(ContentService.MimeType.JSON);
 }
+
